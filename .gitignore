@@ -1,0 +1,8 @@
+#Carpets
+nbproject
+doc
+
+# Info and office docs #
+###################
+*.doc
+*.ppt
