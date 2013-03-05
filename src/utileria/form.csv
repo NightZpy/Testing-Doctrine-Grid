@@ -1,0 +1,12 @@
+frmEmpleado|POST|frmEmpleado|multipart/form-data|regEmpleadoForm.php|frmClass|Datos del Empleado|lgdClass|fldEmpleado|fldClass|divFrmEmpContainer|divFrmEmpContainerClass
+label|txtNombre|lblTxtNombre|labelClass|Nombre:
+text|txtNombre|txtNombre|txtClass|40
+label|txtApellido|lblTxtApellido|labelClass|Apellido:
+text|txtApellido|txtApellido|txtClass|40
+label|txtCedula|lblTxtCedula|labelClass|Cédula:
+text|txtCedula|txtCedula|txtClass|40
+label|rdoSexo|lblRdoSexo|rdoClass|Sexo:
+radio|rdoSexo|rdoClass|divRdoSexo|divRdoClass|2
+rdoSexoMasculino|masculino|Masculino
+rdoSexoFemenino|femenino|Femenino
+submit|sbmtEnviar|sbmtEnviar|sbmtClass|Enviar

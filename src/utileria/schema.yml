@@ -1,0 +1,601 @@
+Cargos:
+  connection: doctrine
+  tableName: cargos
+  columns:
+    id:
+      type: integer(2)
+      fixed: false
+      unsigned: false
+      primary: true
+      sequence: contador_cargos
+    nombre:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: true
+      primary: false
+  relations:
+    Empleados:
+      local: id
+      foreign: cargo_id
+      type: many
+CondicionCargos:
+  connection: doctrine
+  tableName: condicion_cargos
+  columns:
+    id:
+      type: integer(2)
+      fixed: false
+      unsigned: false
+      primary: true
+      sequence: contador_condicion_cargos
+    nombre:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: true
+      primary: false
+  relations:
+    Empleados:
+      local: id
+      foreign: condicion_cargo_id
+      type: many
+Dependencias:
+  connection: doctrine
+  tableName: dependencias
+  columns:
+    id:
+      type: integer(2)
+      fixed: false
+      unsigned: false
+      primary: true
+      sequence: contador_dependencias
+    nombre:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: true
+      primary: false
+  relations:
+    Instituciones:
+      local: id
+      foreign: dependencia_id
+      type: many
+Direcciones:
+  connection: doctrine
+  tableName: direcciones
+  columns:
+    id:
+      type: integer(8)
+      fixed: false
+      unsigned: false
+      primary: true
+      sequence: contador_direcciones
+    ubicacion:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: true
+      primary: false
+    telefono:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    parroquia_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    municipio_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      notnull: true
+      primary: false
+  relations:
+    Parroquias:
+      local: parroquia_id
+      foreign: id
+      type: one
+    Municipios:
+      local: municipio_id
+      foreign: id
+      type: one
+    Empleados:
+      local: id
+      foreign: direccion_id
+      type: many
+    Instituciones:
+      local: id
+      foreign: direccion_id
+      type: many
+Empleados:
+  connection: doctrine
+  tableName: empleados
+  columns:
+    cedula:
+      type: string()
+      fixed: false
+      unsigned: false
+      primary: true
+    nombre:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: true
+      primary: false
+    apellido:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: true
+      primary: false
+    nacionalidad:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    sexo:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    estado_civil:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    fecha_nacimiento:
+      type: date(25)
+      fixed: false
+      unsigned: false
+      notnull: true
+      primary: false
+    movil:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    email:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    direccion_id:
+      type: integer(8)
+      fixed: false
+      unsigned: false
+      notnull: true
+      primary: false
+    tipo_personal_id:
+      type: integer(2)
+      fixed: false
+      unsigned: false
+      notnull: true
+      primary: false
+    nivel_academico_id:
+      type: integer(2)
+      fixed: false
+      unsigned: false
+      notnull: true
+      primary: false
+    cargo_id:
+      type: integer(2)
+      fixed: false
+      unsigned: false
+      notnull: true
+      primary: false
+    condicion_cargo_id:
+      type: integer(2)
+      fixed: false
+      unsigned: false
+      notnull: true
+      primary: false
+    id:
+      type: integer(2)
+      fixed: false
+      unsigned: false
+      notnull: true
+      primary: false
+  relations:
+    Direcciones:
+      local: direccion_id
+      foreign: id
+      type: one
+    Cargos:
+      local: cargo_id
+      foreign: id
+      type: one
+    CondicionCargos:
+      local: condicion_cargo_id
+      foreign: id
+      type: one
+    NivelesAcademicos:
+      local: nivel_academico_id
+      foreign: id
+      type: one
+    TiposPersonal:
+      local: tipo_personal_id
+      foreign: id
+      type: one
+    Voluntarios:
+      local: cedula
+      foreign: cedula_empleado
+      type: many
+Estados:
+  connection: doctrine
+  tableName: estados
+  columns:
+    id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+      sequence: contador_estados
+    nombre:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: true
+      primary: false
+  relations:
+    Municipios:
+      local: id
+      foreign: estado_id
+      type: many
+Instituciones:
+  connection: doctrine
+  tableName: instituciones
+  columns:
+    cod_estadistico:
+      type: string()
+      fixed: false
+      unsigned: false
+      primary: true
+    cod_dea:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: true
+      primary: false
+    nombre:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    email:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    matricula_varones:
+      type: integer(2)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    matricula_hembras:
+      type: integer(2)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    total_docentes:
+      type: integer(2)
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    direccion_id:
+      type: integer(8)
+      fixed: false
+      unsigned: false
+      notnull: true
+      primary: false
+    cedula_director:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: true
+      primary: false
+    dependencia_id:
+      type: integer(2)
+      fixed: false
+      unsigned: false
+      notnull: true
+      primary: false
+    medios_laborales_id:
+      type: integer(2)
+      fixed: false
+      unsigned: false
+      notnull: true
+      primary: false
+    subsistemas_laborales_id:
+      type: integer(2)
+      fixed: false
+      unsigned: false
+      notnull: true
+      primary: false
+  relations:
+    Direcciones:
+      local: direccion_id
+      foreign: id
+      type: one
+    Dependencias:
+      local: dependencia_id
+      foreign: id
+      type: one
+    MediosLaborales:
+      local: medios_laborales_id
+      foreign: id
+      type: one
+    SubsistemasLaborales:
+      local: subsistemas_laborales_id
+      foreign: id
+      type: one
+MediosLaborales:
+  connection: doctrine
+  tableName: medios_laborales
+  columns:
+    id:
+      type: integer(2)
+      fixed: false
+      unsigned: false
+      primary: true
+      sequence: contador_medios_laborales
+    nombre:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: true
+      primary: false
+  relations:
+    Instituciones:
+      local: id
+      foreign: medios_laborales_id
+      type: many
+Municipios:
+  connection: doctrine
+  tableName: municipios
+  columns:
+    id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+      sequence: contador_municipios
+    nombre:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: true
+      primary: false
+    estado_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      notnull: true
+      primary: false
+  relations:
+    Estados:
+      local: estado_id
+      foreign: id
+      type: one
+    Direcciones:
+      local: id
+      foreign: municipio_id
+      type: many
+    Parroquias:
+      local: id
+      foreign: municipio_id
+      type: many
+NivelesAcademicos:
+  connection: doctrine
+  tableName: niveles_academicos
+  columns:
+    id:
+      type: integer(2)
+      fixed: false
+      unsigned: false
+      primary: true
+      sequence: contador_nivel_academico
+    nombre:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: true
+      primary: false
+  relations:
+    Empleados:
+      local: id
+      foreign: nivel_academico_id
+      type: many
+Parroquias:
+  connection: doctrine
+  tableName: parroquias
+  columns:
+    id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+      sequence: contador_parroquias
+    nombre:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: true
+      primary: false
+    municipio_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      notnull: true
+      primary: false
+  relations:
+    Municipios:
+      local: municipio_id
+      foreign: id
+      type: one
+    Direcciones:
+      local: id
+      foreign: parroquia_id
+      type: many
+SubsistemasLaborales:
+  connection: doctrine
+  tableName: subsistemas_laborales
+  columns:
+    id:
+      type: integer(2)
+      fixed: false
+      unsigned: false
+      primary: true
+      sequence: contador_subsistemas_laborales
+    nombre:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: true
+      primary: false
+  relations:
+    Instituciones:
+      local: id
+      foreign: subsistemas_laborales_id
+      type: many
+TipoVoluntarios:
+  connection: doctrine
+  tableName: tipo_voluntarios
+  columns:
+    id:
+      type: integer(2)
+      fixed: false
+      unsigned: false
+      primary: true
+      sequence: contador_tipo_voluntarios
+    nombre:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: true
+      primary: false
+    detalles:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: true
+      primary: false
+  relations:
+    Voluntarios:
+      local: id
+      foreign: tipo_id
+      type: many
+TiposPersonal:
+  connection: doctrine
+  tableName: tipos_personal
+  columns:
+    id:
+      type: integer(2)
+      fixed: false
+      unsigned: false
+      primary: true
+      sequence: contador_tipos_personal
+    nombre:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: true
+      primary: false
+  relations:
+    Empleados:
+      local: id
+      foreign: tipo_personal_id
+      type: many
+Voluntarios:
+  connection: doctrine
+  tableName: voluntarios
+  columns:
+    cedula_empleado:
+      type: string()
+      fixed: false
+      unsigned: false
+      primary: true
+    automovil:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: false
+      primary: false
+    estudia:
+      type: boolean(1)
+      fixed: false
+      unsigned: false
+      notnull: true
+      default: 'true'
+      primary: false
+    que_estudia:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: true
+      default: Nada
+      primary: false
+    sitio_estudio:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: true
+      default: Ninguno
+      primary: false
+    estudios_culminados:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: true
+      default: Ninguno
+      primary: false
+    cursos:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: true
+      default: Ninguno
+      primary: false
+    tiempo_libre:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: true
+      default: Ninguno
+      primary: false
+    organizacion_comunitaria:
+      type: string()
+      fixed: false
+      unsigned: false
+      notnull: true
+      default: Ninguna
+      primary: false
+    tipo_id:
+      type: integer(2)
+      fixed: false
+      unsigned: false
+      notnull: true
+      primary: false
+  relations:
+    Empleados:
+      local: cedula_empleado
+      foreign: cedula
+      type: one
+    TipoVoluntarios:
+      local: tipo_id
+      foreign: id
+      type: one
